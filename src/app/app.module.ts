@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {AppRoutingModule} from './app-routing.module';
 import { MainComponent } from './main/main.component';
+import { FormsModule }  from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { StorageService} from './service/storage.service';
 
 
 @NgModule({
@@ -16,9 +19,11 @@ import { MainComponent } from './main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

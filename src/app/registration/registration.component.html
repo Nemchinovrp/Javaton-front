@@ -6,10 +6,10 @@
           <h5 class="card-title text-center">Введите ваше имя</h5>
           <form class="form-signin">
             <div class="form-label-group">
-              <input type="text" id="name" class="form-control" required autofocus>
+              <input [(ngModel)]="name" [ngModelOptions]="{standalone: true}" type="text" id="name" class="form-control" required autofocus>
               <label for="name"> </label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block text-uppercase" [routerLink]="['/main']">Войти</button>
+            <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)="myEvent()">Войти</button>
             <hr class="my-4">
           </form>
         </div>
