@@ -13,52 +13,35 @@
     <div class="row">
       <div class="col">
         <label for="sel1"><p>Валюта</p></label>
-        <select class="form-control" id="sel1">
-          <option><p>USD</p></option>
-          <option><p>EVR</p></option>
-          <option><p>RUS</p></option>
+        <select class="form-control" [ngModel]="currency">
+          <option *ngFor="let currency of currencies" [ngValue]="currency" [selected]="currency.rate === currency.rate">{{currency.code}}</option>
         </select>
-        <label for="sel1"><p>Сумма</p></label>
+        <label for="sel2"><p>Сумма</p></label>
         <input class="form-control">
       </div>
       <div class="col">
-        <label for="sel1"><p>Вектор ставки</p></label>
+        <label for="sel3"><p>Вектор ставки</p></label>
         <select class="form-control" id="sel2">
           <option><p>Понижение</p></option>
           <option><p>Повышение</p></option>
           <option><p>Равно</p></option>
         </select>
-        <label for="sel1"><p>Время ставки</p></label>
-        <select class="form-control" id="sel3">
+        <label for="sel4"><p>Время ставки</p></label>
+        <select class="form-control" id="sel4">
           <option><p>30 сек</p></option>
           <option><p>1 минута</p></option>
           <option><p>2 минуты</p></option>
         </select>
       </div>
     </div>
-    <label for="sel1"> </label>
+    <label for="sel5"> </label>
     <button type="button" class="btn btn-success form-control" (click)="betMake()"><h3><p>Сделать ставку</p></h3></button>
 
   </div>
   <div class="col"><h3><p>Список пользователей</p></h3>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col"><p>id</p></th>
-        <th scope="col"><p>First</p></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row"><p>1</p></th>
-        <td><p>Mark</p></td>
-      </tr>
-      <tr>
-        <th scope="row"><p>2</p></th>
-        <td><p>Jacob</p></td>
-      </tr>
-      </tbody>
-    </table>
+      <li *ngFor="let user of users">
+        <h4><p>{{user.name}} - {{user.balance}}</p></h4>
+      </li>
   </div>
 </div>
 <div class="row">

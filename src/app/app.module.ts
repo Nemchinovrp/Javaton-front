@@ -10,6 +10,7 @@ import { FormsModule }  from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService} from './service/storage.service';
 import {CurrencyService} from './service/currency.service';
+import {UserService} from './service/user.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {CurrencyService} from './service/currency.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [StorageService, CurrencyService],
+  providers: [StorageService, CurrencyService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
