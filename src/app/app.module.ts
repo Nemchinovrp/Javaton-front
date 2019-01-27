@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { FormsModule }  from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StorageService} from './service/storage.service';
+import {CurrencyService} from './service/currency.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { StorageService} from './service/storage.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [StorageService],
+  providers: [StorageService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
