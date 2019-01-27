@@ -14,7 +14,7 @@
       <div class="col">
         <label for="sel1"><p>Валюта</p></label>
         <select class="form-control" [ngModel]="currency">
-          <option *ngFor="let currency of currencies" [ngValue]="currency" [selected]="currency.rate === currency.rate">{{currency.code}}</option>
+          <option *ngFor="let currency of currencies" [ngValue]="currency" [selected]="currency.code === currency.code">{{currency.code}}</option>
         </select>
         <label for="sel2"><p>Сумма</p></label>
         <input class="form-control">

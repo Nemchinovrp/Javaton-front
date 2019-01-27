@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class CurrencyService {
-  private apiUrl = 'http://localhost:8080/currency/all';
+  private apiUrl = 'http://localhost:8230/currency/all';
 
   constructor(private http: HttpClient) {}
 

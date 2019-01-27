@@ -13,6 +13,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getAllUsers(): Observable<any> {
-    return this.http.get('http://localhost:8080/user/top');
+    return this.http.get('http://localhost:8230/user/top');
   }
 }

@@ -20,15 +20,13 @@ export class MainComponent implements OnInit {
   private nameUser: string;
   private currencies: Currency[];
   private users: User[];
-  private currency: Currency;
+  private currency: Currency = new Currency();
   private bet: Bet;
 
   constructor(private storage: StorageService, private currencyServiсe: CurrencyService,
               private userService: UserService) { }
 
   ngOnInit() {
-    console.log('Into maincontroller');
-    console.log('vrevr  ' + this.storage.getToken());
     this.nameUser = this.storage.getToken();
     this.getAllCurrencies();
     this.getAllUsers();
