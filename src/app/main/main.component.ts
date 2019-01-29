@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {StorageService} from '../service/storage.service';
 import {CurrencyService} from '../service/currency.service';
 import {Currency} from '../model/currency';
-import {Observable} from 'rxjs/Observable';
 import {UserService} from '../service/user.service';
 import {User} from '../model/user';
 import 'rxjs/add/observable/interval';
@@ -34,7 +33,6 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.nameUser = this.storage.getToken();
     this.getAllCurrencies();
-    this.interval();
     this.alive = true;
     TimerObservable.create(0, 10)
       .pipe(
@@ -48,37 +46,13 @@ export class MainComponent implements OnInit {
   }
 
   betMake() {
-    console.log(this.currency);
-    console.log(this.bet);
-  }
-
-  interval() {
-    console.log('Start method');
-    Observable.interval(1000 * 60).subscribe(x => {
-      this.getAllUsers();
-    });
-    console.log('End method');
+    alert('Сделать ставку');
   }
 
   getAllCurrencies() {
     this.currencyServiсe.findAll().subscribe(
       currs => {
-        console.log(currs);
         this.currencies = currs;
-        console.log(this.currencies);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
-
-  getAllUsers() {
-    this.userService.getAllUsers().subscribe(
-      users => {
-        console.log(users);
-        this.users = users;
-        console.log(this.users);
       },
       err => {
         console.log(err);
