@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   private nameUser: string;
   private currencies: Currency[];
   private users: User[];
-  private currency: Currency = new Currency();
+  private currency: Currency;
   private bet: Bet;
 
   constructor(private storage: StorageService, private currencyServiсe: CurrencyService,
@@ -34,6 +34,7 @@ export class MainComponent implements OnInit {
 
   betMake() {
     console.log(this.currency);
+    console.log(this.bet);
   }
 
   getAllCurrencies() {
