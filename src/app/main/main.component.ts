@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StorageService} from '../service/storage.service';
 import {CurrencyService} from '../service/currency.service';
 import {Currency} from '../model/currency';
@@ -9,6 +9,8 @@ import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/switchMap';
 import {Bet} from '../model/bet';
+import {TimerObservable} from 'rxjs/observable/TimerObservable';
+import {takeWhile} from 'rxjs/operators';
 
 
 @Component({
@@ -23,18 +25,39 @@ export class MainComponent implements OnInit {
   private currency: Currency;
   private bet: Bet;
 
+  private alive: boolean;
+
   constructor(private storage: StorageService, private currencyServiсe: CurrencyService,
-              private userService: UserService) { }
+              private userService: UserService) {
+  }
 
   ngOnInit() {
     this.nameUser = this.storage.getToken();
     this.getAllCurrencies();
-    this.getAllUsers();
+    this.interval();
+    this.alive = true;
+    TimerObservable.create(0, 10)
+      .pipe(
+        takeWhile(() => this.alive)
+      )
+      .subscribe(() => {
+        this.userService.getAllUsers().subscribe(result => {
+          this.users = result;
+        });
+      });
   }
 
   betMake() {
     console.log(this.currency);
     console.log(this.bet);
+  }
+
+  interval() {
+    console.log('Start method');
+    Observable.interval(1000 * 60).subscribe(x => {
+      this.getAllUsers();
+    });
+    console.log('End method');
   }
 
   getAllCurrencies() {
@@ -47,7 +70,6 @@ export class MainComponent implements OnInit {
       err => {
         console.log(err);
       }
-
     );
   }
 
@@ -61,7 +83,6 @@ export class MainComponent implements OnInit {
       err => {
         console.log(err);
       }
-
     );
   }
 }
