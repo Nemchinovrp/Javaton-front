@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
     this.nameUser = this.storage.getToken();
     this.getAllCurrencies();
     this.alive = true;
-    TimerObservable.create(0, 10)
+    TimerObservable.create(0, 1000)
       .pipe(
         takeWhile(() => this.alive)
       )
